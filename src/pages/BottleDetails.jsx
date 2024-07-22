@@ -16,10 +16,12 @@ function BottleDetails() {
   const getBottle = async () => {
     try {
       const result = await axios.get(
-        `${import.meta.env.VITE_SERVER}/bottles/${params.bottleId}`
+        `${import.meta.env.VITE_SERVER}/bottles/${
+          params.bottleId
+        }?_embed=reviews`
       );
       setBottle(result.data);
-      console.log(result.data);
+      console.log(result);
     } catch (error) {
       console.log(error);
     }
@@ -27,6 +29,21 @@ function BottleDetails() {
   if (!bottle) {
     return <p>loading...</p>;
   }
+  const rating = (reviewScore) => {
+    if (reviewScore === 0) {
+      return <span>★★★★★</span>;
+    } else if (reviewScore === 1) {
+      return <span>⭐★★★★</span>;
+    } else if (reviewScore === 2) {
+      return <span>⭐⭐★★★</span>;
+    } else if (reviewScore === 3) {
+      return <span>⭐⭐⭐★★</span>;
+    } else if (reviewScore === 4) {
+      return <span>⭐⭐⭐⭐★</span>;
+    } else {
+      return <span>⭐⭐⭐⭐⭐</span>;
+    }
+  };
   return (
     <div>
       <div className="bottle-details">
@@ -60,6 +77,17 @@ function BottleDetails() {
             </tr>
           </tbody>
         </table>
+      </div>
+      <div>
+        {bottle.reviews.map((review, i) => {
+          return (
+            <div key={i} className="review-div">
+              <span>{review.name}</span>
+              <span>{rating(review.rating)}</span>
+              <p>{review.opinion}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
