@@ -43,5 +43,7 @@ body {
 }
 .bottle-details table tr td {
   padding: 5px;
-  width: 40px;
+}
+.td1 {
+  width: 15vmin;
 }

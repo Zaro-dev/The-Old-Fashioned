@@ -34,28 +34,28 @@ function BottleDetails() {
         <table>
           <tbody>
             <tr>
-              <th>
+              <th style={{ textAlign: "center" }}>
                 <h4 className="bottle-title">{bottle.name}</h4>
               </th>
             </tr>
             <tr>
-              <td>Origin</td>
+              <td className="td1">Origin</td>
               <td>{bottle.origin}</td>
             </tr>
             <tr>
-              <td>Type</td>
+              <td className="td1">Type</td>
               <td>{bottle.type}</td>
             </tr>
             <tr>
-              <td>Age</td>
+              <td className="td1">Age</td>
               <td>{bottle.age ? bottle.age : "-"}</td>
             </tr>
             <tr>
-              <td>Strength</td>
+              <td className="td1">Strength</td>
               <td>{bottle.alcohol}</td>
             </tr>
             <tr>
-              <td>Price</td>
+              <td className="td1">Price</td>
               <td style={{ fontWeight: "bold" }}>{bottle.price}€</td>
             </tr>
           </tbody>
