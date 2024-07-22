@@ -82,9 +82,12 @@ function BottleDetails() {
         {bottle.reviews.map((review, i) => {
           return (
             <div key={i} className="review-div">
-              <span>{review.name}</span>
-              <span>{rating(review.rating)}</span>
+              <span style={{ fontWeight: "bold" }}>{review.name} </span>
+              <span> {rating(review.rating)}</span>
+              <br></br>
+
               <p>{review.opinion}</p>
+              <br />
             </div>
           );
         })}
