@@ -1,0 +1,49 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+} */
+
+body {
+  background-color: #341d23;
+}
+.barra {
+  display: flex;
+  justify-content: space-between;
+  background-color: lightblue;
+}
+.bottles-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 50px;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+.bottles-div img {
+  border-radius: 50px;
+}
+.bottles-father {
+  display: flex;
+  flex-wrap: wrap;
+}
+.bottle-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+.bottle-title {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.bottle-details table tr td {
+  padding: 5px;
+}
+.td1 {
+  width: 15vmin;
+}
