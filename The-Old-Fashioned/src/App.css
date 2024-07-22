@@ -5,6 +5,10 @@
   text-align: center;
 } */
 
-body {
-  background-color: #341D23;
+.CompanyCard {
+  height: 200px;
+  width: 150;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
