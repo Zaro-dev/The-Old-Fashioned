@@ -1,22 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import Form from "react-bootstrap/Form";
 
 export default function SearchBar({
-  data,
-  setData,
+  allData,
+  setFilteredData,
   searchInput,
   setSearchInput,
 }) {
   const handleOnChange = (event) => {
-    let newValue = event.target.value;
+    const newValue = event.target.value;
     setSearchInput(newValue);
 
-    const filteredData = data.filter((bottle) => {
-      return bottle.name.toLowerCase().includes(searchInput.toLowerCase());
+    const filteredData = allData.filter((bottle) => {
+      return bottle.name.toLowerCase().includes(newValue.toLowerCase());
     });
 
-    //console.log(filteredData);
-    setData(filteredData);
+    setFilteredData(filteredData);
   };
 
   return (

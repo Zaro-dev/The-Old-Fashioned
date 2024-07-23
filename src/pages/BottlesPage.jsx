@@ -5,7 +5,8 @@ import Dropdown from "../components/Dropdown";
 import SearchBar from "../components/SearchBar";
 
 function BottlesPage() {
-  const [data, setData] = useState();
+  const [allData, setAllData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
@@ -15,17 +16,17 @@ function BottlesPage() {
   const getData = async () => {
     try {
       const result = await axios.get(`${import.meta.env.VITE_SERVER}/bottles`);
-      setData(result.data);
+      setAllData(result.data);
+      setFilteredData(result.data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  if (!data) {
+  if (!allData.length) {
     return <p>loading...</p>;
   }
-  //console.log(data);
-  console.log(searchInput);
+
   return (
     <div>
       <div className="barra">
@@ -35,8 +36,8 @@ function BottlesPage() {
         -
         <div>
           <SearchBar
-            data={data}
-            setData={setData}
+            allData={allData}
+            setFilteredData={setFilteredData}
             searchInput={searchInput}
             setSearchInput={setSearchInput}
           />
@@ -45,7 +46,7 @@ function BottlesPage() {
       </div>
 
       <div className="bottles-father">
-        {data.map((data, i) => {
+        {filteredData.map((data, i) => {
           return (
             <div key={i} className="bottles-div">
               <Link to={`/bottles/${data.id}`}>
