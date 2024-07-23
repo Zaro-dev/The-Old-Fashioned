@@ -1,50 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { Dropdown, Form, Button, Row, Col } from "react-bootstrap";
 
-const styles = {
-  dropdownMenu: {
-    width: "200px",
-    padding: "15px",
-  },
-  dropdownToggle: {
-    width: "150px",
-  },
-  formGroup: {
-    marginBottom: "20px",
-  },
-  formLabel: {
-    fontSize: "1.1em",
-  },
-};
-
 function FilterDropdown({ allData, onFilter }) {
+  // Estado para los filtros
   const [filters, setFilters] = useState({
     origin: "",
     price: { min: 0, max: 1000 },
   });
 
+  // Estado para las opciones de filtros (origen y rango de precios)
   const [options, setOptions] = useState({
     origin: [],
     price: { min: 0, max: 1000 },
   });
 
+  // useEffect para configurar las opciones de filtro
   useEffect(() => {
-    const newOptions = {
-      origin: [...new Set(allData.map((bottle) => bottle.origin))],
-      price: {
-        min: Math.min(...allData.map((bottle) => bottle.price)),
-        max: Math.max(...allData.map((bottle) => bottle.price)),
-      },
-    };
-    setOptions(newOptions);
+    // Extraer orígenes únicos y precios mínimo y máximo de allData
+    const uniqueOrigins = [...new Set(allData.map((bottle) => bottle.origin))];
+    const minPrice = Math.min(...allData.map((bottle) => bottle.price));
+    const maxPrice = Math.max(...allData.map((bottle) => bottle.price));
+
+    // Actualizar opciones y filtros
+    setOptions({
+      origin: uniqueOrigins,
+      price: { min: minPrice, max: maxPrice },
+    });
     setFilters((prev) => ({
       ...prev,
-      price: newOptions.price,
+      price: { min: minPrice, max: maxPrice },
     }));
   }, [allData]);
 
+  // Manejar cambios en los filtros
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
+
+    // Actualizar el estado de filtros basado en el nombre del campo
     if (name === "priceMin" || name === "priceMax") {
       setFilters((prev) => ({
         ...prev,
@@ -61,33 +53,34 @@ function FilterDropdown({ allData, onFilter }) {
     }
   };
 
+  // Aplicar filtros
   const applyFilters = () => {
     onFilter(filters);
   };
 
+  // Limpiar filtros
   const clearFilters = () => {
-    const clearedFilters = {
+    setFilters({
       origin: "",
       price: options.price,
-    };
-    setFilters(clearedFilters);
-    onFilter(clearedFilters);
+    });
+    onFilter({
+      origin: "",
+      price: options.price,
+    });
   };
 
   return (
     <Dropdown>
-      <Dropdown.Toggle
-        variant="success"
-        id="dropdown-basic"
-        style={styles.dropdownToggle}
-      >
+      <Dropdown.Toggle variant="success" id="dropdown-basic">
         Filtrar Botellas
       </Dropdown.Toggle>
 
-      <Dropdown.Menu style={styles.dropdownMenu}>
+      <Dropdown.Menu>
         <Form>
-          <Form.Group style={styles.formGroup}>
-            <Form.Label style={styles.formLabel}>Origen</Form.Label>
+          {/* Filtro de origen */}
+          <Form.Group>
+            <Form.Label>Origen</Form.Label>
             <Form.Control
               as="select"
               name="origin"
@@ -95,16 +88,17 @@ function FilterDropdown({ allData, onFilter }) {
               onChange={handleFilterChange}
             >
               <option value="">Todos</option>
-              {options.origin.map((option, index) => (
-                <option key={index} value={option}>
-                  {option}
+              {options.origin.map((origin, index) => (
+                <option key={index} value={origin}>
+                  {origin}
                 </option>
               ))}
             </Form.Control>
           </Form.Group>
 
-          <Form.Group style={styles.formGroup}>
-            <Form.Label style={styles.formLabel}>Rango de Precio</Form.Label>
+          {/* Filtro de rango de precio */}
+          <Form.Group>
+            <Form.Label>Rango de Precio</Form.Label>
             <Row>
               <Col>
                 <Form.Control
@@ -113,8 +107,6 @@ function FilterDropdown({ allData, onFilter }) {
                   value={filters.price.min}
                   onChange={handleFilterChange}
                   placeholder="Min"
-                  min={options.price.min}
-                  max={options.price.max}
                 />
               </Col>
               <Col>
@@ -124,13 +116,12 @@ function FilterDropdown({ allData, onFilter }) {
                   value={filters.price.max}
                   onChange={handleFilterChange}
                   placeholder="Max"
-                  min={options.price.min}
-                  max={options.price.max}
                 />
               </Col>
             </Row>
           </Form.Group>
 
+          {/* Botones de aplicar y limpiar filtros */}
           <Button variant="primary" onClick={applyFilters} className="mt-2">
             Aplicar Filtros
           </Button>
