@@ -28,7 +28,7 @@ function CompanyDetails() {
   }
   return (
     <div>
-      <h2>{company.name}</h2>
+      <h2 className='title'>{company.name}</h2>
       <div>
         <img src={company.image} alt="imagen marca" />
         <p>Aqui va un texto explicando lo maravillosa que es esta empresa de whiskey y toda su historia</p>

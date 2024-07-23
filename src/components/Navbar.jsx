@@ -4,8 +4,42 @@ import imgLogo from '../assets/logo.png'
 import Nav from 'react-bootstrap/Nav'
 import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 
 function MyNavbar() {
+
+  return(
+    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Link to={'/'} style={{textDecoration: "none"}}>
+        <Navbar.Brand> <img src={imgLogo} alt="" width={75} />The Old Fashioned</Navbar.Brand>
+        </Link>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link ><Link to={'/'} style={{textDecoration: "none"}}>Home</Link></Nav.Link>
+            <Nav.Link ><Link to={'/about'} style={{textDecoration: "none"}}>About</Link></Nav.Link>
+            <NavDropdown title="Whiskeys" id="collapsible-nav-dropdown">
+              <NavDropdown.Item ><Link to={'/companies'} style={{textDecoration: "none"}}>Companies</Link></NavDropdown.Item>
+              <NavDropdown.Item>
+              <Link to={'/bottles'} style={{textDecoration: "none"}}>Bottles</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item>
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+}
+
+export default MyNavbar;
+
+/* function MyNavbar() {
   return (
   
     <Navbar  expand="lg" className="bg-body-tertiary bg-color">
@@ -31,4 +65,4 @@ function MyNavbar() {
   )
 }
 
-export default MyNavbar
+export default MyNavbar */

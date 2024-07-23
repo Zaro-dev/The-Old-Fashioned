@@ -28,13 +28,16 @@ function CompaniesPage() {
 
   return (
     <div>
-      <h2>MARCAS WHISKEY</h2>
+      <h2 className='title'>MARCAS WHISKEY</h2>
+      <div className='companies-container'>
 
       {companies.map((eachCompany) => {
         return(
           <CompanyCard key={eachCompany.id} eachCompany={eachCompany}/>
         )
       })}
+
+      </div>
     </div>
   )
 }

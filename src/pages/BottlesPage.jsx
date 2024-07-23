@@ -29,6 +29,8 @@ function BottlesPage() {
         <div>AÑADIR BOTELLA</div>
       </div>
 
+      <h2 className="title">Botellas</h2>
+
       <div className="bottles-father">
         {data.map((data, i) => {
           return (

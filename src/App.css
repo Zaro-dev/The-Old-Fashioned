@@ -47,3 +47,50 @@ body {
 .td1 {
   width: 15vmin;
 }
+
+.companies-container{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 20px 20px 20px;
+  justify-content: space-around;
+}
+
+.card-container{
+  margin: 20px 30px;
+}
+
+.title {
+  text-align: center;
+  margin: 20px 0 45px 0;
+  font-weight: 700;
+  font-size: 60px;
+  text-decoration: underline;
+  color: #333;
+  text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.75);
+}
+
+
+footer {
+  height: 50px;
+  width: 100vw;
+  background-color: rgb(147, 147, 147);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: fixed;
+  bottom: 0;
+}
+
+footer a {
+  text-decoration: none;
+}
+footer a:visited {
+  color: rgb(96, 96, 96);
+}
+footer a:hover {
+  color: #ffffff;
+}
+footer img {
+  height: 30px;
+}

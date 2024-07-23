@@ -19,7 +19,7 @@ function CompanyCard(props) {
       }
     }
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="card-container" style={{ width: '18rem' }}>
       <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>

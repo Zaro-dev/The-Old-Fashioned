@@ -8,6 +8,8 @@ import CompanyDetails from './pages/CompanyDetails'
 import BottlesPage from './pages/BottlesPage'
 import BottleDetails from './pages/BottleDetails'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import ErrorPage from './pages/ErrorPage'
 
 function App() {
   
@@ -24,7 +26,9 @@ function App() {
       <Route path='/companies/:companyId' element={<CompanyDetails />} />
       <Route path='/bottles' element= {<BottlesPage />} />
       <Route path='/bottles/:bottleId' element={<BottleDetails />} />
+      <Route path='/error' element={<ErrorPage/>}/>
     </Routes>
+    <Footer />
     </>
   )
 }
