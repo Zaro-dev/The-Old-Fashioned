@@ -11,7 +11,7 @@ function BottlesPage() {
 
   const getData = async () => {
     try {
-      const result = await axios.get(`${import.meta.env.VITE_SERVER}/bottles`);
+      const result = await axios.get(`${import.meta.env.VITE_SERVER_URL}/bottles`);
       setData(result.data);
     } catch (error) {
       console.log(error);

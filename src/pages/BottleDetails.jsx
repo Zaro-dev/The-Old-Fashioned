@@ -16,7 +16,7 @@ function BottleDetails() {
   const getBottle = async () => {
     try {
       const result = await axios.get(
-        `${import.meta.env.VITE_SERVER}/bottles/${
+        `${import.meta.env.VITE_SERVER_URL}/bottles/${
           params.bottleId
         }?_embed=reviews`
       );
