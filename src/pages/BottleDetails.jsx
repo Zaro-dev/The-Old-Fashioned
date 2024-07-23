@@ -3,28 +3,30 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import AddCommentForm from "../components/AddCommentForm";
 
 function BottleDetails() {
   const params = useParams();
   const [bottle, setBottle] = useState();
-  console.log(params);
-
+  const [allReviews, setAllReviews] = useState([]);
   useEffect(() => {
-    getBottle();
+    getData();
   }, []);
-
-  const getBottle = async () => {
+  const getData = async () => {
     try {
-      const result = await axios.get(
+      const { data } = await axios.get(
         `${import.meta.env.VITE_SERVER}/bottles/${
           params.bottleId
         }?_embed=reviews`
       );
-      setBottle(result.data);
-      console.log(result);
+      setBottle(data);
+      setAllReviews(data.reviews);
     } catch (error) {
-      console.log(error);
+      console.error("Error data:", error);
     }
+  };
+  const handleAddComment = (newComment) => {
+    setAllReviews([...allReviews, newComment]);
   };
   if (!bottle) {
     return <p>loading...</p>;
@@ -79,13 +81,18 @@ function BottleDetails() {
         </table>
       </div>
       <div>
-        {bottle.reviews.map((review, i) => {
+        <AddCommentForm
+          onAddComment={handleAddComment}
+          bottleId={params.bottleId}
+        />
+        <br />
+        <br />
+        {allReviews.map((review, i) => {
           return (
             <div key={i} className="review-div">
               <span style={{ fontWeight: "bold" }}>{review.name} </span>
               <span> {rating(review.rating)}</span>
               <br></br>
-
               <p>{review.opinion}</p>
               <br />
             </div>
