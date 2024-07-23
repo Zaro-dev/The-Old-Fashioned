@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Dropdown from "../components/Dropdown";
+import SearchBar from "../components/SearchBar";
 
 function BottlesPage() {
   const [data, setData] = useState();
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     getData();
@@ -17,15 +20,27 @@ function BottlesPage() {
       console.log(error);
     }
   };
+
   if (!data) {
     return <p>loading...</p>;
   }
-
+  //console.log(data);
+  console.log(searchInput);
   return (
     <div>
       <div className="barra">
-        <div>DROPDOWN</div>
-        <div>BUSCADOR</div>
+        <div>
+          <Dropdown />
+        </div>
+        -
+        <div>
+          <SearchBar
+            data={data}
+            setData={setData}
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+          />
+        </div>
         <div>AÑADIR BOTELLA</div>
       </div>
 
