@@ -32,23 +32,30 @@ function BottlesPage() {
   const handleFilter = (filters) => {
     let filtered = allData;
 
+    // Si hay un filtro para el origen, aplícalo
     if (filters.origin) {
-      filtered = filtered.filter((bottle) => bottle.origin === filters.origin);
+      filtered = filtered.filter((bottle) => {
+        return bottle.origin === filters.origin;
+      });
     }
 
-    if (
-      filters.price &&
-      filters.price.min !== undefined &&
-      filters.price.max !== undefined
-    ) {
-      filtered = filtered.filter(
-        (bottle) =>
-          bottle.price >= filters.price.min && bottle.price <= filters.price.max
-      );
+    // Si hay un filtro para el precio, aplícalo
+    if (filters.price) {
+      // Verifica que el rango de precios esté definido
+      if (filters.price.min !== undefined && filters.price.max !== undefined) {
+        filtered = filtered.filter((bottle) => {
+          return (
+            bottle.price >= filters.price.min &&
+            bottle.price <= filters.price.max
+          );
+        });
+      }
     }
 
+    // Actualiza el estado con los datos filtrados
     setFilteredData(filtered);
   };
+
   if (!allData.length) {
     return <p>loading...</p>;
   }
