@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import AddCommentForm from "../components/AddCommentForm";
-import Badge from 'react-bootstrap/Badge';
-import Stack from 'react-bootstrap/Stack';
+import Badge from "react-bootstrap/Badge";
+import Stack from "react-bootstrap/Stack";
 
 function BottleDetails() {
   const params = useParams();
@@ -44,7 +44,6 @@ function BottleDetails() {
   const handleAddComment = (newComment) => {
     setAllReviews([...allReviews, newComment]);
   };
-  console.log(bottle);
   //Funcion para eliminar esta botella y redirigirte a la pagina principal de las botellas
   const handleDeleteButton = async () => {
     const isConfirmed = window.confirm(
@@ -83,6 +82,26 @@ function BottleDetails() {
       [e.target.name]: e.target.value,
     });
   };
+  // Funcion para borrar comentarios
+  const handleDeleteReview = async (id) => {
+    const isConfirmed = window.confirm(
+      "¿Estás seguro de que quieres eliminar este comentario??"
+    );
+    if (isConfirmed) {
+      try {
+        const revId = axios.delete(
+          `${import.meta.env.VITE_SERVER}/reviews/${id}`
+        );
+        getData();
+        alert("Reseña eliminada de manera muy exitosa!! :D");
+      } catch (error) {
+        console.error("Error data:", error);
+      }
+    } else {
+      alert("¿Mejor no la eliminamos?");
+    }
+  };
+
   //If para loading
   if (!bottle) {
     return <p>loading...</p>;
@@ -105,49 +124,6 @@ function BottleDetails() {
   return (
     <div>
       <div className="bottle-details">
-        <img src={bottle.image} alt="imagen" width={500} />
-        <table>
-          <tbody>
-            <tr>
-              <th style={{ textAlign: "center" }}>
-                <h4 className="bottle-title">{bottle.name}</h4>
-              </th>
-            </tr>
-            <tr>
-              <td className="td1">Origin</td>
-              <td>{bottle.origin}</td>
-            </tr>
-            <tr>
-              <td className="td1">Type</td>
-              <td>{bottle.type}</td>
-            </tr>
-            <tr>
-              <td className="td1">Age</td>
-              <td>{bottle.age ? bottle.age : "-"}</td>
-            </tr>
-            <tr>
-              <td className="td1">Flavours</td>
-              <td>{bottle.cata.map((eachFlavour) => {
-                return(`${eachFlavour} `)
-              })}</td>
-            </tr>
-            <tr>
-              <td className="td1">Strength</td>
-              <td>{bottle.alcohol}</td>
-            </tr>
-            <tr>
-              <td className="td1">Price</td>
-              <td style={{ fontWeight: "bold" }}>{bottle.price}€</td>
-            </tr>
-            <tr>
-              <td className="td1">
-              <Stack direction="horizontal" gap={2}>
-      {bottle.price >= 75 ? <Badge bg="success">Premium</Badge> : null}
-    </Stack>
-              </td>
-            </tr>
-          </tbody>
-        </table>
         <div className="imageAndName">
           <img src={bottle.image} alt="imagen" width={500} />
           <h4 className="bottle-title">{bottle.name}</h4>
@@ -241,12 +217,29 @@ function BottleDetails() {
                 <td>{bottle.age ? bottle.age : "-"}</td>
               </tr>
               <tr>
+                <td className="td1">Flavours</td>
+                <td>
+                  {bottle.cata.map((eachFlavour) => {
+                    return `${eachFlavour} `;
+                  })}
+                </td>
+              </tr>
+              <tr>
                 <td className="td1">Strength</td>
                 <td>{bottle.alcohol}</td>
               </tr>
               <tr>
                 <td className="td1">Price</td>
                 <td style={{ fontWeight: "bold" }}>{bottle.price}€</td>
+              </tr>
+              <tr>
+                <td className="td1">
+                  <Stack direction="horizontal" gap={2}>
+                    {bottle.price >= 75 ? (
+                      <Badge bg="success">Premium</Badge>
+                    ) : null}
+                  </Stack>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -267,7 +260,14 @@ function BottleDetails() {
               <span style={{ fontWeight: "bold" }}>{review.name} </span>
               <span> {rating(review.rating)}</span>
               <br></br>
-              <p>{review.opinion}</p>
+              <p id="reviewComment">{review.opinion}</p>
+              <button
+                id="deleteReview"
+                onClick={() => handleDeleteReview(review.id)}
+              >
+                🗑️
+              </button>
+              {console.log(review.id)}
               <br />
             </div>
           );
