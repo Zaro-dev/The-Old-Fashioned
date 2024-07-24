@@ -6,19 +6,7 @@ import CompanyCard from "../components/CompanyCard";
 
 function CompaniesPage() {
   const [companies, setCompanies] = useState(null);
-
- /*  useEffect(() => {
-    
-    axios.get(`${import.meta.env.VITE_SERVER_URL}/companies`)
-    .then((response) => {
-      console.log(response.data)
-      setCompanies(response.data)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }, []) */
-
+  
   useEffect(() => {
     getData();
   }, []);
