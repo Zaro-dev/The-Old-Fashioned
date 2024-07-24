@@ -6,7 +6,7 @@ import axios from "axios";
 export default function AddCommentForm({ onAddComment, bottleId }) {
   const [newName, setNewName] = useState("");
   const [newReview, setNewReview] = useState("");
-  const [newRating, setNewRating] = useState("0");
+  const [newRating, setNewRating] = useState(0);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   const handleAddReview = async (e) => {
@@ -24,7 +24,7 @@ export default function AddCommentForm({ onAddComment, bottleId }) {
       onAddComment(res.data);
       setNewName("");
       setNewReview("");
-      setNewRating("0");
+      setNewRating(0);
     } catch (error) {
       console.log(error);
     }

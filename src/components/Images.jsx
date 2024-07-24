@@ -4,8 +4,6 @@ import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 
 function Images(props) {
-
-    console.log(props)
   return (
     <Container>
       <Row>

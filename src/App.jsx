@@ -15,7 +15,6 @@ import { ThemeContext } from "./context/themeContext";
 
 function App() {
   const { isDarkMode } = useContext(ThemeContext);
-  console.log(isDarkMode);
   return (
     <div className={isDarkMode ? "darkMode" : "lightMode"}>
       <Navbar />

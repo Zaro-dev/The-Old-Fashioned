@@ -21,7 +21,6 @@ function CompanyDetails() {
         }?_embed=bottles`
       );
       setCompany(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
