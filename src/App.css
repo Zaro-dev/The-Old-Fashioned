@@ -36,10 +36,10 @@ body {
   align-items: center;
   justify-content: center;
   margin: 20px;
+  flex-direction: inherit;
 }
 .bottle-title {
   text-align: center;
-  padding-bottom: 10px;
 }
 .bottle-details table tr td {
   padding: 5px;
@@ -48,14 +48,14 @@ body {
   width: 15vmin;
 }
 
-.companies-container{
+.companies-container {
   display: flex;
   flex-wrap: wrap;
   margin: 20px 20px 20px 20px;
   justify-content: space-around;
 }
 
-.card-container{
+.card-container {
   margin: 20px 30px;
 }
 
@@ -68,7 +68,6 @@ body {
   color: #333;
   text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.75);
 }
-
 
 footer {
   height: 50px;
@@ -93,4 +92,113 @@ footer a:hover {
 }
 footer img {
   height: 30px;
+}
+.imageAndName {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#deleteBtn {
+  /* background-color: lightcoral; */
+
+  border-radius: 5px;
+}
+#editBtn {
+  /* background-color: lightgreen; */
+
+  border-radius: 5px;
+}
+#mostrarformulario {
+  background-color: lightcyan;
+  border-radius: 5px;
+}
+.deleteEdit {
+  display: flex;
+  max-width: 100%;
+}
+
+.button-89 {
+  --b: 3px; /* border thickness */
+  --s: 0.45em; /* size of the corner */
+  --color: #373b44;
+
+  padding: calc(0.5em + var(--s)) calc(0.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background: conic-gradient(
+      from 90deg at var(--b) var(--b),
+      #0000 90deg,
+      var(--color) 0
+    )
+    var(--_p) var(--_p) / calc(100% - var(--b) - 2 * var(--_p))
+    calc(100% - var(--b) - 2 * var(--_p));
+  transition: 0.3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: 0.6em;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-89:hover,
+.button-89:focus-visible {
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: 0.05em;
+}
+
+.button-89:active {
+  background: var(--color);
+  color: #fff;
+}
+
+.button-64 {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-64:active,
+.button-64:hover {
+  outline: 0;
+}
+
+.button-64 span {
+  background-color: rgb(59, 30, 2);
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.button-64:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .button-64 {
+    font-size: 24px;
+    min-width: 196px;
+  }
 }

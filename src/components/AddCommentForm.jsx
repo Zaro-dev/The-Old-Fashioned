@@ -7,6 +7,7 @@ export default function AddCommentForm({ onAddComment, bottleId }) {
   const [newName, setNewName] = useState("");
   const [newReview, setNewReview] = useState("");
   const [newRating, setNewRating] = useState("0");
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   const handleAddReview = async (e) => {
     e.preventDefault();
@@ -28,41 +29,48 @@ export default function AddCommentForm({ onAddComment, bottleId }) {
       console.log(error);
     }
   };
+  const handleToggleFormulario = () => {
+    setMostrarFormulario(!mostrarFormulario);
+  };
   return (
     <div className="add-bottle-form">
-      <h2>Añadir Nuevo comentario</h2>
-      <Form onSubmit={handleAddReview}>
-        <Form.Group className="mb-3">
-          <Form.Label>Nombre</Form.Label>
-          <Form.Control
-            type="text"
-            value={newName}
-            onChange={(e) => setNewName(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Rating</Form.Label>
-          <Form.Control
-            type="text"
-            value={newRating}
-            onChange={(e) => setNewRating(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Comentario</Form.Label>
-          <Form.Control
-            type="text"
-            value={newReview}
-            onChange={(e) => setNewReview(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Añadir Comentario
-        </Button>
-      </Form>
+      <button onClick={handleToggleFormulario} class="button-89" role="button">
+        {mostrarFormulario ? "Ocultar Formulario" : "Mostrar Formulario"}
+      </button>
+      {mostrarFormulario && (
+        <Form onSubmit={handleAddReview}>
+          <Form.Group className="mb-3">
+            <Form.Label>Nombre</Form.Label>
+            <Form.Control
+              type="text"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Rating</Form.Label>
+            <Form.Control
+              type="text"
+              value={newRating}
+              onChange={(e) => setNewRating(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Comentario</Form.Label>
+            <Form.Control
+              type="text"
+              value={newReview}
+              onChange={(e) => setNewReview(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Añadir Comentario
+          </Button>
+        </Form>
+      )}
     </div>
   );
 }
