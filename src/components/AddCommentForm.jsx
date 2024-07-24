@@ -34,7 +34,11 @@ export default function AddCommentForm({ onAddComment, bottleId }) {
   };
   return (
     <div className="add-bottle-form">
-      <button onClick={handleToggleFormulario} class="button-89" role="button">
+      <button
+        onClick={handleToggleFormulario}
+        className="button-89"
+        role="button"
+      >
         {mostrarFormulario ? "Ocultar Formulario" : "Mostrar Formulario"}
       </button>
       {mostrarFormulario && (

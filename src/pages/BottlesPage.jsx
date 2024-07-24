@@ -6,12 +6,17 @@ import SearchBar from "../components/SearchBar";
 import AddBottleForm from "../components/AddBottleForm";
 import Button from "react-bootstrap/Button";
 
+import { useContext } from "react";
+import { ThemeContext } from "../context/themeContext";
+
 function BottlesPage() {
+  const { isDarkMode } = useContext(ThemeContext);
   // Estados para almacenar los datos de las botellas, los datos filtrados y la entrada de búsqueda
   const [allData, setAllData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [bottleLimitDisplay, setBottleLimitDisplay] = useState(10);
 
   // useEffect para cargar los datos de las botellas al montar el componente
   useEffect(() => {
@@ -96,7 +101,7 @@ function BottlesPage() {
 
       {/* Mostrar la lista de botellas filtradas */}
       <div className="bottles-father">
-        {filteredData.map((bottle) => (
+        {filteredData.slice(0, bottleLimitDisplay).map((bottle) => (
           <div key={bottle.id} className="bottles-div">
             <Link to={`/bottles/${bottle.id}`}>
               <img src={bottle.image} alt={bottle.name} width={500} />

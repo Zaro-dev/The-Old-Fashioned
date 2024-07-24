@@ -112,7 +112,6 @@ function BottleDetails() {
               onClick={handleDeleteButton}
               className="button-64"
               role="button"
-              style={{ width: "10px" }}
             >
               <span className="icon">🗑️</span>
             </button>
