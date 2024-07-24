@@ -6,8 +6,11 @@ import SearchBar from "../components/SearchBar";
 import AddBottleForm from "../components/AddBottleForm";
 import Button from "react-bootstrap/Button";
 
+import { useContext } from "react";
+import { ThemeContext } from "../context/themeContext";
 
 function BottlesPage() {
+  const { isDarkMode } = useContext(ThemeContext);
   // Estados para almacenar los datos de las botellas, los datos filtrados y la entrada de búsqueda
   const [allData, setAllData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -18,10 +21,13 @@ function BottlesPage() {
   useEffect(() => {
     fetchData();
   }, []);
+
   // Función para obtener datos de botellas desde el servidor
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_SERVER}/bottles`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_SERVER}/bottles`
+      );
       setAllData(response.data);
       setFilteredData(response.data);
     } catch (error) {

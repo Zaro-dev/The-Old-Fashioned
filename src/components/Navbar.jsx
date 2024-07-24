@@ -6,30 +6,44 @@ import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+import { useContext } from "react";
+import { ThemeContext } from "../context/themeContext";
 
 function MyNavbar() {
-
-  return(
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+  const { isDarkMode, handleToggleTheme } = useContext(ThemeContext);
+  return (
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      className="bg-body-tertiary"
+      data-bs-theme={isDarkMode ? "dark" : "light"}
+    >
       <Container>
-        <Link to={'/'} style={{textDecoration: "none"}}>
-        <Navbar.Brand> <img src={imgLogo} alt="" width={75} />The Old Fashioned</Navbar.Brand>
-        </Link>
+        <Navbar.Brand as={Link} to={"/"}>
+          <img src={imgLogo} alt="" width={75} />
+          The Old Fashioned
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link ><Link to={'/'} style={{textDecoration: "none",color:"black"}}>Home</Link></Nav.Link>
-            <Nav.Link ><Link to={'/about'} style={{textDecoration: "none",color:"black"}}>About</Link></Nav.Link>
-            <NavDropdown title="Whiskeys" id="collapsible-nav-dropdown" style={{textDecoration: "none",color:"black"}}>
-              <NavDropdown.Item ><Link to={'/companies'} style={{textDecoration: "none",color:"black"}}>Companies</Link></NavDropdown.Item>
-              <NavDropdown.Item>
-              <Link to={'/bottles'} style={{textDecoration: "none",color:"black"}}>Bottles</Link>
+            <Nav.Link as={Link} to={"/"}>
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} to={"/about"}>
+              About
+            </Nav.Link>
+            <NavDropdown title="Whiskeys" id="collapsible-nav-dropdown">
+              <NavDropdown.Item as={Link} to={"/companies"}>
+                Companies
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={"/bottles"}>
+                Bottles
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item>
-                Separated link
-              </NavDropdown.Item>
             </NavDropdown>
+            <NavDropdown.Item>
+              <button onClick={handleToggleTheme}>☀️/🌑</button>
+            </NavDropdown.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>
