@@ -54,14 +54,16 @@ function BottleDetails() {
   return (
     <div>
       <div className="bottle-details">
-        <img src={bottle.image} alt="imagen" width={500} />
+        <div>
+          <img src={bottle.image} alt="imagen" width={500} />
+          <h4 className="bottle-title">{bottle.name}</h4>
+        </div>
+        {/* <div>
+          <button>Delete</button>
+          <button>Edit</button>
+        </div> */}
         <table>
           <tbody>
-            <tr>
-              <th style={{ textAlign: "center" }}>
-                <h4 className="bottle-title">{bottle.name}</h4>
-              </th>
-            </tr>
             <tr>
               <td className="td1">Origin</td>
               <td>{bottle.origin}</td>
