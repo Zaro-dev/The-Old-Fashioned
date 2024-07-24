@@ -9,9 +9,12 @@ function BottleDetails() {
   const params = useParams();
   const [bottle, setBottle] = useState();
   const [allReviews, setAllReviews] = useState([]);
+
   useEffect(() => {
     getData();
   }, []);
+
+  // Función para obtener los detalles de la botella y sus reseñas
   const getData = async () => {
     try {
       const { data } = await axios.get(
@@ -25,9 +28,11 @@ function BottleDetails() {
       console.error("Error data:", error);
     }
   };
+  // Función para añadir un nuevo comentario a las reseñas
   const handleAddComment = (newComment) => {
     setAllReviews([...allReviews, newComment]);
   };
+
   if (!bottle) {
     return <p>loading...</p>;
   }

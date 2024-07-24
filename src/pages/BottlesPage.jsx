@@ -7,91 +7,103 @@ import AddBottleForm from "../components/AddBottleForm";
 import Button from "react-bootstrap/Button";
 
 function BottlesPage() {
+  // Estados para almacenar los datos de las botellas, los datos filtrados y la entrada de búsqueda
   const [allData, setAllData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [showForm, setShowForm] = useState(false);
 
+  // useEffect para cargar los datos de las botellas al montar el componente
   useEffect(() => {
-    getData();
+    fetchData();
   }, []);
 
-  const getData = async () => {
+  // Función para obtener datos de botellas desde el servidor
+  const fetchData = async () => {
     try {
-      const result = await axios.get(`${import.meta.env.VITE_SERVER}/bottles`);
-      setData(result.data);
+      const response = await axios.get(
+        `${import.meta.env.VITE_SERVER}/bottles`
+      );
+      setAllData(response.data);
+      setFilteredData(response.data);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching bottles:", error);
     }
   };
 
-  const toggleForm = () => {
-    setShowForm(!showForm);
+  // Función para manejar el envío del formulario de nueva botella
+  const handleAddBottle = async (newBottle) => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER}/bottles`,
+        newBottle
+      );
+      // Actualiza la lista de botellas con la nueva botella
+      setAllData((prevData) => [...prevData, response.data]);
+      setFilteredData((prevData) => [...prevData, response.data]);
+      setShowForm(false);
+    } catch (error) {
+      console.error("Error adding bottle:", error);
+    }
   };
 
+  // Función para alternar la visibilidad del formulario
+  const toggleForm = () => setShowForm((prev) => !prev);
+
+  // Función para aplicar los filtros seleccionados
   const handleFilter = (filters) => {
     let filtered = allData;
 
-    // Si hay un filtro para el origen, aplícalo
     if (filters.origin) {
-      filtered = filtered.filter((bottle) => {
-        return bottle.origin === filters.origin;
-      });
+      filtered = filtered.filter((bottle) => bottle.origin === filters.origin);
     }
 
-    // Si hay un filtro para el precio, aplícalo
     if (filters.price) {
-      // Verifica que el rango de precios esté definido
-      if (filters.price.min !== undefined && filters.price.max !== undefined) {
-        filtered = filtered.filter((bottle) => {
-          return (
-            bottle.price >= filters.price.min &&
-            bottle.price <= filters.price.max
-          );
-        });
-      }
+      const { min, max } = filters.price;
+      filtered = filtered.filter(
+        (bottle) => bottle.price >= min && bottle.price <= max
+      );
     }
 
-    // Actualiza el estado con los datos filtrados
     setFilteredData(filtered);
   };
 
+  // Muestra un mensaje de carga mientras se obtienen los datos
   if (!allData.length) {
-    return <p>loading...</p>;
+    return <p>Loading...</p>;
   }
 
   return (
     <div>
+      {/* Barra de herramientas con filtros y búsqueda */}
       <div className="barra">
-        <div>
-          <FilterDropdown allData={allData} onFilter={handleFilter} />
-        </div>
-        <div>
-          <SearchBar
-            allData={allData}
-            setFilteredData={setFilteredData}
-            searchInput={searchInput}
-            setSearchInput={setSearchInput}
-          />
-        </div>
-        <div>
-          <Button onClick={toggleForm}>
-            {showForm ? "CERRAR" : "AÑADIR BOTELLA"}
-          </Button>
-        </div>
+        <FilterDropdown allData={allData} onFilter={handleFilter} />
+        <SearchBar
+          allData={allData}
+          setFilteredData={setFilteredData}
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+        />
+        <Button onClick={toggleForm}>
+          {showForm ? "Cerrar Formulario" : "Añadir Botella"}
+        </Button>
       </div>
 
+      {/* Mostrar el formulario para añadir una botella si está visible */}
+      {showForm && (
+        <AddBottleForm onSubmit={handleAddBottle} onClose={toggleForm} />
+      )}
+
+      {/* Mostrar la lista de botellas filtradas */}
       <div className="bottles-father">
-        {filteredData.map((data, i) => {
-          return (
-            <div key={i} className="bottles-div">
-              <Link to={`/bottles/${data.id}`}>
-                <img src={data.image} alt="" width={500} />
-              </Link>
-              <h3>{data.name}</h3>
-            </div>
-          );
-        })}
+        {filteredData.map((bottle) => (
+          <div key={bottle.id} className="bottles-div">
+            <Link to={`/bottles/${bottle.id}`}>
+              <img src={bottle.image} alt={bottle.name} width={500} />
+            </Link>
+            <h3>{bottle.name}</h3>
+          </div>
+        ))}
       </div>
     </div>
   );
