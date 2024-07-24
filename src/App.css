@@ -139,11 +139,11 @@ footer img {
   text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.75);
 }
 
-.custom-title-carousel{
-  color: black
+.custom-title-carousel {
+  color: black;
 }
 
-.custom-img-carousel{
+.custom-img-carousel {
   height: 100px;
 }
 
@@ -266,4 +266,12 @@ footer img {
 .lightMode {
   background-color: white;
   min-height: 100vh;
+}
+#deleteReview {
+  border: 0;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+#reviewComment {
+  margin-bottom: 0;
 }

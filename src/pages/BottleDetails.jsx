@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import AddCommentForm from "../components/AddCommentForm";
-import Badge from 'react-bootstrap/Badge';
-import Stack from 'react-bootstrap/Stack';
+import Badge from "react-bootstrap/Badge";
+import Stack from "react-bootstrap/Stack";
 
 function BottleDetails() {
   const params = useParams();
@@ -82,6 +82,26 @@ function BottleDetails() {
       [e.target.name]: e.target.value,
     });
   };
+  // Funcion para borrar comentarios
+  const handleDeleteReview = async (id) => {
+    const isConfirmed = window.confirm(
+      "¿Estás seguro de que quieres eliminar este comentario??"
+    );
+    if (isConfirmed) {
+      try {
+        const revId = axios.delete(
+          `${import.meta.env.VITE_SERVER}/reviews/${id}`
+        );
+        getData();
+        alert("Reseña eliminada de manera muy exitosa!! :D");
+      } catch (error) {
+        console.error("Error data:", error);
+      }
+    } else {
+      alert("¿Mejor no la eliminamos?");
+    }
+  };
+
   //If para loading
   if (!bottle) {
     return <p>loading...</p>;
@@ -244,7 +264,14 @@ function BottleDetails() {
               <span style={{ fontWeight: "bold" }}>{review.name} </span>
               <span> {rating(parsedRating)}</span>
               <br></br>
-              <p>{review.opinion}</p>
+              <p id="reviewComment">{review.opinion}</p>
+              <button
+                id="deleteReview"
+                onClick={() => handleDeleteReview(review.id)}
+              >
+                🗑️
+              </button>
+              {console.log(review.id)}
               <br />
             </div>
           );
