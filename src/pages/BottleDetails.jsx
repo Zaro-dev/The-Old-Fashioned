@@ -107,6 +107,7 @@ function BottleDetails() {
           <img src={bottle.image} alt="imagen" width={500} />
           <h4 className="bottle-title">{bottle.name}</h4>
           <div className="deleteEdit">
+            {/* Botón para eliminar la botella */}
             <button
               onClick={handleDeleteButton}
               className="button-64"
@@ -115,25 +116,29 @@ function BottleDetails() {
             >
               <span className="icon">🗑️</span>
             </button>
+            {/* Botón para alternar el modo de edición */}
             <button
               className="button-64"
               role="button"
               onClick={() => {
-                setIsEditing(!isEditing);
-                setEditedBottle(bottle);
+                setIsEditing(!isEditing); // Cambia entre modo edición y visualización
+                setEditedBottle(bottle); // Inicializa el formulario con los datos actuales
               }}
             >
               <span className="icon">{isEditing ? "✖️" : "✏️"}</span>
             </button>
           </div>
         </div>
+        {/* Renderizado condicional basado en si estamos en modo edición o no */}
         {isEditing ? (
+          // Formulario de edición
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              handleEditButton();
+              handleEditButton(); // Maneja la actualización de la botella
             }}
           >
+            {/* Campos de edición para cada propiedad de la botella */}
             <input
               name="name"
               value={editedBottle.name}
@@ -175,8 +180,10 @@ function BottleDetails() {
             </button>
           </form>
         ) : (
+          // Tabla de detalles de la botella (modo visualización)
           <table>
             <tbody>
+              {/* Filas para cada detalle de la botella */}
               <tr>
                 <td className="td1">Origin</td>
                 <td>{bottle.origin}</td>
@@ -202,12 +209,14 @@ function BottleDetails() {
         )}
       </div>
       <div>
+        {/* Componente para añadir nuevos comentarios */}
         <AddCommentForm
           onAddComment={handleAddComment}
           bottleId={params.bottleId}
         />
         <br />
         <br />
+        {/* Mapeo y renderizado de todas las reseñas */}
         {allReviews.map((review, i) => {
           return (
             <div key={i} className="review-div">
