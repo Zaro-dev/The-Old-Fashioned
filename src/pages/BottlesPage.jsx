@@ -5,12 +5,15 @@ import FilterDropdown from "../components/FilterDropdown";
 import SearchBar from "../components/SearchBar";
 import AddBottleForm from "../components/AddBottleForm";
 import Button from "react-bootstrap/Button";
+
+
 function BottlesPage() {
   // Estados para almacenar los datos de las botellas, los datos filtrados y la entrada de búsqueda
   const [allData, setAllData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [bottleLimitDisplay, setBottleLimitDisplay] = useState(10);
   // useEffect para cargar los datos de las botellas al montar el componente
   useEffect(() => {
     fetchData();
@@ -37,6 +40,12 @@ function BottlesPage() {
       console.error("Error adding bottle:", error);
     }
   };
+
+  // Función para traer más botellas
+  const getMoreBottles = () => {
+    setBottleLimitDisplay(bottleLimitDisplay +10)
+  } 
+
   // Función para alternar la visibilidad del formulario
   const toggleForm = () => setShowForm((prev) => !prev);
   // Función para aplicar los filtros seleccionados
@@ -74,7 +83,7 @@ function BottlesPage() {
       {showForm && <AddBottleForm onSubmit={handleAddBottle} onClose={toggleForm} />}
       {/* Mostrar la lista de botellas filtradas */}
       <div className="bottles-father">
-        {filteredData.map((bottle) => (
+        {filteredData.slice(0,bottleLimitDisplay).map((bottle) => (
           <div key={bottle.id} className="bottles-div">
             <Link to={`/bottles/${bottle.id}`}>
               <img src={bottle.image} alt={bottle.name} width={500} />
@@ -83,6 +92,8 @@ function BottlesPage() {
           </div>
         ))}
       </div>
+
+      <Button onClick={getMoreBottles}>Ver más</Button>
     </div>
   );
 }

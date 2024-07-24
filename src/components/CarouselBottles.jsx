@@ -8,17 +8,20 @@ function CarouselBottles(props) {
     const {company} = props
 
   return (
-    <Carousel>
+    <Carousel fade >
         {company.bottles.map((eachBottle) => {
 
             return(
-            <Carousel.Item key={eachBottle.id} interval={5000}>
+            <Carousel.Item key={eachBottle.id} interval={3000}>
+                <div className='carousel'>
+
                 <Link to={`/bottles/${eachBottle.id}`}>
-                <img src={eachBottle.image} alt="Foto botella" />
+                <img className='custom-img-carousel' src={eachBottle.image} alt="Foto botella" />
                 </Link>
                 <Carousel.Caption>
-                    <h3>{eachBottle.name}</h3>
+                    <h3 className='custom-title-carousel'>{eachBottle.name}</h3>
                 </Carousel.Caption>
+                </div>
             </Carousel.Item>
             )
             

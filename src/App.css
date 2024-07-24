@@ -69,6 +69,7 @@ body {
   text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.75);
 }
 
+/*FOOTER*/
 
 footer {
   height: 50px;
@@ -78,7 +79,6 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  position: fixed;
   bottom: 0;
 }
 
@@ -93,4 +93,53 @@ footer a:hover {
 }
 footer img {
   height: 30px;
+}
+
+/*COMPANY DETAILS*/
+
+.company-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  flex-direction: row;
+}
+
+.company-title {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.company-details table tr td {
+  padding: 5px;
+}
+
+/*CAROUSEL*/
+
+.carousel-container {
+  position: relative;
+  border: solid black 2px;
+  height: 20%;
+}
+
+.title-2 {
+  text-align: center;
+  margin: 20px 0 45px 0;
+  font-weight: 700;
+  font-size: 30px;
+  text-decoration: underline;
+  color: #333;
+  text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.75);
+}
+
+.custom-title-carousel{
+  color: black
+}
+
+.custom-img-carousel{
+  height: 100px;
+}
+
+.carousel {
+  background-color: black;
 }

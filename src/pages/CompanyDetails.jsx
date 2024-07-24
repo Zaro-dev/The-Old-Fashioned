@@ -33,16 +33,36 @@ function CompanyDetails() {
   return (
     <div>
       <h2 className='title'>{company.name}</h2>
-      <div>
+      <div className='company-details'>
         <img src={company.image} alt="imagen marca" />
-        <p>
-          Aqui va un texto explicando lo maravillosa que es esta empresa de
-          whiskey y toda su historia
-        </p>
+        <table>
+          <tbody>
+            <tr>
+              <th style={{ textAlign: "center" }}>
+                <h4 className="company-title" style={{textDecoration: "underline"}}>{company.name}</h4>
+              </th>
+            </tr>
+            <tr>
+              <td className="td1" style={{fontWeight: "600"}}>Origin</td>
+              <td>{company.estOn}</td>
+            </tr>
+            <tr>
+              <td className="td1" style={{fontWeight: "600"}}>Foundation</td>
+              <td>{company.yearFoundation}</td>
+            </tr>
+            <tr>
+              <td className="td1" style={{fontWeight: "600"}}>Description</td>
+              <td >{company.description}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <hr />
 
-      <CarouselBottles company={company} />
+      <div className='carousel-container'>
+        <h4 className='title-2'>Company Bottles</h4>
+        <CarouselBottles company={company} />
+      </div>
     </div>
   );
 }

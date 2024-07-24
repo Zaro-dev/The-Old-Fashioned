@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
-import imgLogo from '../assets/logo.png'
+import imgLogo from '../assets/logo-definitivo.png'
 import Nav from 'react-bootstrap/Nav'
 import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -18,12 +18,12 @@ function MyNavbar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link ><Link to={'/'} style={{textDecoration: "none"}}>Home</Link></Nav.Link>
-            <Nav.Link ><Link to={'/about'} style={{textDecoration: "none"}}>About</Link></Nav.Link>
-            <NavDropdown title="Whiskeys" id="collapsible-nav-dropdown">
-              <NavDropdown.Item ><Link to={'/companies'} style={{textDecoration: "none"}}>Companies</Link></NavDropdown.Item>
+            <Nav.Link ><Link to={'/'} style={{textDecoration: "none",color:"black"}}>Home</Link></Nav.Link>
+            <Nav.Link ><Link to={'/about'} style={{textDecoration: "none",color:"black"}}>About</Link></Nav.Link>
+            <NavDropdown title="Whiskeys" id="collapsible-nav-dropdown" style={{textDecoration: "none",color:"black"}}>
+              <NavDropdown.Item ><Link to={'/companies'} style={{textDecoration: "none",color:"black"}}>Companies</Link></NavDropdown.Item>
               <NavDropdown.Item>
-              <Link to={'/bottles'} style={{textDecoration: "none"}}>Bottles</Link>
+              <Link to={'/bottles'} style={{textDecoration: "none",color:"black"}}>Bottles</Link>
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item>

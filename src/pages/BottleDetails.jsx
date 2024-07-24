@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import AddCommentForm from "../components/AddCommentForm";
+import Badge from 'react-bootstrap/Badge';
+import Stack from 'react-bootstrap/Stack';
 
 function BottleDetails() {
   const params = useParams();
@@ -70,12 +72,25 @@ function BottleDetails() {
               <td>{bottle.age ? bottle.age : "-"}</td>
             </tr>
             <tr>
+              <td className="td1">Flavours</td>
+              <td>{bottle.cata.map((eachFlavour) => {
+                return(`${eachFlavour} `)
+              })}</td>
+            </tr>
+            <tr>
               <td className="td1">Strength</td>
               <td>{bottle.alcohol}</td>
             </tr>
             <tr>
               <td className="td1">Price</td>
               <td style={{ fontWeight: "bold" }}>{bottle.price}€</td>
+            </tr>
+            <tr>
+              <td className="td1">
+              <Stack direction="horizontal" gap={2}>
+      {bottle.price >= 75 ? <Badge bg="success">Premium</Badge> : null}
+    </Stack>
+              </td>
             </tr>
           </tbody>
         </table>
