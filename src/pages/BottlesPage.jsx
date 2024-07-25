@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FilterDropdown from "../components/FilterDropdown";
 import SearchBar from "../components/SearchBar";
 import AddBottleForm from "../components/AddBottleForm";
@@ -17,6 +17,7 @@ function BottlesPage() {
   const [searchInput, setSearchInput] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [bottleLimitDisplay, setBottleLimitDisplay] = useState(10);
+  const navigate = useNavigate();
   // useEffect para cargar los datos de las botellas al montar el componente
   useEffect(() => {
     fetchData();
@@ -43,7 +44,7 @@ function BottlesPage() {
       setFilteredData((prevData) => [...prevData, response.data]);
       setShowForm(false);
     } catch (error) {
-      console.error("Error adding bottle:", error);
+      navigate('/error');
     }
   };
 
@@ -51,6 +52,10 @@ function BottlesPage() {
   const getMoreBottles = () => {
     setBottleLimitDisplay(bottleLimitDisplay +10)
   } 
+
+  const regretBottles = () => {
+    setBottleLimitDisplay(bottleLimitDisplay - bottleLimitDisplay + 10)
+  }
 
   // Función para alternar la visibilidad del formulario
   const toggleForm = () => setShowForm((prev) => !prev);
@@ -98,8 +103,9 @@ function BottlesPage() {
           </div>
         ))}
       </div>
-
-      <Button onClick={getMoreBottles}>Ver más</Button>
+      {console.log('filteredData length = ' + filteredData.length)}
+      {console.log('bottleLimit = ' + bottleLimitDisplay)}
+      {bottleLimitDisplay >= filteredData.length  ? <Button className="button-list-bottles" onClick={regretBottles}>Ver menos</Button> : <Button className="button-list-bottles" onClick={getMoreBottles}>Ver más</Button>}
     </div>
   );
 }

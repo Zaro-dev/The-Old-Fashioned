@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CompanyCard from "../components/CompanyCard";
 
 function CompaniesPage() {
   const [companies, setCompanies] = useState(null);
+  const navigate = useNavigate();
   
   useEffect(() => {
     getData();
@@ -18,7 +19,7 @@ function CompaniesPage() {
       );
       setCompanies(response.data);
     } catch (error) {
-      console.log(error);
+      navigate('/error');
     }
   };
 

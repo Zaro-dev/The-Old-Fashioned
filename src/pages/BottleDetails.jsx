@@ -37,7 +37,7 @@ function BottleDetails() {
       setBottle(data);
       setAllReviews(data.reviews);
     } catch (error) {
-      console.error("Error data:", error);
+      navigate('/error');
     }
   };
   // Función para añadir un nuevo comentario a las reseñas
@@ -57,7 +57,7 @@ function BottleDetails() {
         navigate("/bottles");
         alert("Botella eliminada de manera muy exitosa!! :D");
       } catch (error) {
-        console.error("Error data:", error);
+        navigate('/error');
       }
     } else {
       alert("¿Mejor no la eliminamos?");
@@ -73,7 +73,7 @@ function BottleDetails() {
       setIsEditing(false);
       getData();
     } catch (error) {
-      console.error("Error data:", error);
+      navigate('/error');
     }
   };
   const handleInputChange = (e) => {
@@ -95,7 +95,7 @@ function BottleDetails() {
         getData();
         alert("Reseña eliminada de manera muy exitosa!! :D");
       } catch (error) {
-        console.error("Error data:", error);
+        navigate('/error');
       }
     } else {
       alert("¿Mejor no la eliminamos?");
@@ -108,7 +108,7 @@ function BottleDetails() {
   }
   const rating = (reviewScore) => {
     /* console.log(`${reviewScore} es:` + typeof reviewScore) */
-    if (reviewScore === 0) {
+    if (reviewScore <= 0) {
       return <span>★★★★★</span>;
     } else if (reviewScore === 1) {
       return <span>⭐★★★★</span>;
@@ -118,7 +118,7 @@ function BottleDetails() {
       return <span>⭐⭐⭐★★</span>;
     } else if (reviewScore === 4) {
       return <span>⭐⭐⭐⭐★</span>;
-    } else if (reviewScore === 5){
+    } else if (reviewScore >= 5){
       return <span>⭐⭐⭐⭐⭐</span>;
     }
   };

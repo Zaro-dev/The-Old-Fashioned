@@ -39,10 +39,9 @@ function MyNavbar() {
               <NavDropdown.Item as={Link} to={"/bottles"}>
                 Bottles
               </NavDropdown.Item>
-              <NavDropdown.Divider />
             </NavDropdown>
             <NavDropdown.Item>
-              <button onClick={handleToggleTheme}>☀️/🌑</button>
+              {isDarkMode ? <button onClick={handleToggleTheme}>☀️</button> : <button onClick={handleToggleTheme}>🌑</button>}
             </NavDropdown.Item>
           </Nav>
         </Navbar.Collapse>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import CarouselBottles from '../components/CarouselBottles';
 
@@ -7,6 +7,7 @@ import CarouselBottles from '../components/CarouselBottles';
 
 function CompanyDetails() {
   const params = useParams();
+  const navigate = useNavigate();
 
   const [company, setCompany] = useState(null);
   useEffect(() => {
@@ -22,7 +23,7 @@ function CompanyDetails() {
       );
       setCompany(response.data);
     } catch (error) {
-      console.log(error);
+      navigate('/error');
     }
   };
 

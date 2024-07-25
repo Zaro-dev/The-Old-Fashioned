@@ -54,12 +54,14 @@ export default function AddCommentForm({ onAddComment, bottleId }) {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Rating</Form.Label>
-            <Form.Control
-              type="text"
-              value={newRating}
-              onChange={(e) => setNewRating(e.target.value)}
-              required
-            />
+          <Form.Select onChange={(e) => setNewRating(e.target.value)}>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </Form.Select>
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Comentario</Form.Label>

@@ -18,9 +18,6 @@ function CarouselBottles(props) {
                 <Link to={`/bottles/${eachBottle.id}`}>
                 <img className='custom-img-carousel' src={eachBottle.image} alt="Foto botella" />
                 </Link>
-                <Carousel.Caption>
-                    <h3 className='custom-title-carousel'>{eachBottle.name}</h3>
-                </Carousel.Caption>
                 </div>
             </Carousel.Item>
             )
@@ -28,6 +25,8 @@ function CarouselBottles(props) {
         })}
     </Carousel>
   );
+
+  
 }
 
 export default CarouselBottles;
