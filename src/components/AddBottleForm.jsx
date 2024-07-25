@@ -61,15 +61,25 @@ function AddBottleForm({ onSubmit, onClose }) {
         </Form.Group>
 
         <Form.Label>Sabores de cata</Form.Label>
-        <Form.Check onChange={(e) => setCata(cata.push(e))}>
-          {flavours.map((e, i) => {
-            return (
-              <div key={i}>
-                <Form.Check type="checkbox" id={i + 1} label={e} />
-              </div>
-            );
-          })}
-        </Form.Check>
+
+        {flavours.map((flavour, i) => (
+          <div key={i}>
+            <Form.Check
+              type="checkbox"
+              id={i + 1}
+              label={flavour}
+              onChange={(e) => {
+                const checked = e.target.checked;
+                if (checked) {
+                  setCata((prevCata) => [...prevCata, flavour]);
+                } else {
+                  setCata((prevCata) => prevCata.filter((f) => f !== flavour));
+                }
+              }}
+              checked={cata.includes(flavour)}
+            />
+          </div>
+        ))}
 
         <Form.Group className="mb-3">
           <Form.Label>Origen</Form.Label>
