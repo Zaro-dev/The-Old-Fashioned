@@ -204,11 +204,6 @@ function BottleDetails() {
           <table>
           <tbody>
             <tr>
-              <th style={{ textAlign: "center" }}>
-                <h4 className="bottle-title">{bottle.name}</h4>
-              </th>
-            </tr>
-            <tr>
               <td className="td1">Origin</td>
               <td>{bottle.origin}</td>
             </tr>
