@@ -113,19 +113,31 @@ footer img {
 
 .company-details {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  margin: 20px;
+  justify-content: space-around;
+  margin: 20px 25vw 20px 25vw;
   flex-direction: row;
+  border-radius: 10px;
+  border: solid black 1px;
+  width: 50%;
+  padding: 3px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0.75em 1em 1em,
+    rgba(0, 0, 0, 0.25) 5px 1em 1em,
+    rgba(255, 255, 255, 0.1) 1px 0px 0px 2px inset;
 }
 
+.company-details table{
+margin-left: 50px;
+width: 55%;
+}
 .company-title {
   text-align: center;
-  padding-bottom: 10px;
+  background-image: linear-gradient(to right, #99780e 45%, #ee4b2b);
+  background-clip: text;
+  color: transparent;
 }
 .company-details table tr td {
-  padding: 5px;
+  padding: 10px;
 }
 
 /*CAROUSEL*/
@@ -138,7 +150,6 @@ footer img {
   align-items: center;
   border-radius: 10px;
   margin: 50px;
-  background-color: lightgrey;
 }
 
 .title-2 {
@@ -165,8 +176,7 @@ footer img {
 }
 
 .carousel {
-  background-color: black;
-  width: 200px;
+  width: 220px;
   height: 400px;
   position: absolute;
 }

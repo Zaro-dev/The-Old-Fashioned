@@ -37,17 +37,35 @@ function BottlesPage() {
   };
   // Función para manejar el envío del formulario de nueva botella
   const handleAddBottle = async (newBottle) => {
+    if (!newBottle.image) {
+      alert("Porfavor selecciona una imagen");
+      return;
+    }
+    const formData = new FormData();
+    formData.append("file", newBottle.image);
+    formData.append(
+      "upload_preset",
+      import.meta.env.VITE_UNSIGNED_UPLOAD_PRESET
+    );
+    formData.append("cloud_name", import.meta.env.VITE_CLOUDINARY_NAME);
+
     try {
+      const responseImage = await axios.post(
+        "https://api.cloudinary.com/v1_1/dmh3y2onw/upload",
+        formData
+      );
+      console.log("Upload successful", responseImage.data.url);
+
       const response = await axios.post(
         `${import.meta.env.VITE_SERVER}/bottles`,
-        newBottle
+        { ...newBottle, image: responseImage.data.url }
       );
       // Actualiza la lista de botellas con la nueva botella
       setAllData((prevData) => [...prevData, response.data]);
       setFilteredData((prevData) => [...prevData, response.data]);
       setShowForm(false);
     } catch (error) {
-      navigate('/error');
+      navigate("/error");
     }
   };
 
@@ -57,8 +75,8 @@ function BottlesPage() {
   };
 
   const regretBottles = () => {
-    setBottleLimitDisplay(bottleLimitDisplay - bottleLimitDisplay + 10)
-  }
+    setBottleLimitDisplay(bottleLimitDisplay - bottleLimitDisplay + 10);
+  };
 
   // Función para alternar la visibilidad del formulario
   const toggleForm = () => setShowForm((prev) => !prev);
@@ -116,9 +134,17 @@ function BottlesPage() {
           </div>
         ))}
       </div>
-      {console.log('filteredData length = ' + filteredData.length)}
-      {console.log('bottleLimit = ' + bottleLimitDisplay)}
-      {bottleLimitDisplay >= filteredData.length  ? <Button className="button-list-bottles" onClick={regretBottles}>Ver menos</Button> : <Button className="button-list-bottles" onClick={getMoreBottles}>Ver más</Button>}
+      {console.log("filteredData length = " + filteredData.length)}
+      {console.log("bottleLimit = " + bottleLimitDisplay)}
+      {bottleLimitDisplay >= filteredData.length ? (
+        <Button className="button-list-bottles" onClick={regretBottles}>
+          Ver menos
+        </Button>
+      ) : (
+        <Button className="button-list-bottles" onClick={getMoreBottles}>
+          Ver más
+        </Button>
+      )}
     </div>
   );
 }

@@ -24,7 +24,7 @@ function BottleDetails() {
 
   useEffect(() => {
     getData();
-  });
+  }, []);
   // Función para obtener los detalles de la botella y sus reseñas
   const getData = async () => {
     try {
@@ -36,7 +36,7 @@ function BottleDetails() {
       setBottle(data);
       setAllReviews(data.reviews);
     } catch (error) {
-      navigate('/error');
+      navigate("/error");
     }
   };
   // Función para añadir un nuevo comentario a las reseñas
@@ -56,7 +56,7 @@ function BottleDetails() {
         navigate("/bottles");
         alert("Botella eliminada de manera muy exitosa!! :D");
       } catch (error) {
-        navigate('/error');
+        navigate("/error");
       }
     } else {
       alert("¿Mejor no la eliminamos?");
@@ -72,7 +72,7 @@ function BottleDetails() {
       setIsEditing(false);
       getData();
     } catch (error) {
-      navigate('/error');
+      navigate("/error");
     }
   };
   const handleInputChange = (e) => {
@@ -94,7 +94,7 @@ function BottleDetails() {
         getData();
         alert("Reseña eliminada de manera muy exitosa!! :D");
       } catch (error) {
-        navigate('/error');
+        navigate("/error");
       }
     } else {
       alert("¿Mejor no la eliminamos?");
@@ -117,7 +117,7 @@ function BottleDetails() {
       return <span>⭐⭐⭐★★</span>;
     } else if (reviewScore === 4) {
       return <span>⭐⭐⭐⭐★</span>;
-    } else if (reviewScore >= 5){
+    } else if (reviewScore >= 5) {
       return <span>⭐⭐⭐⭐⭐</span>;
     }
   };
@@ -250,8 +250,8 @@ function BottleDetails() {
         <br />
         {/* Mapeo y renderizado de todas las reseñas */}
         {allReviews.map((review, i) => {
-          console.log(review)
-          const parsedRating = parseInt(review.rating)
+          console.log(review);
+          const parsedRating = parseInt(review.rating);
           /* console.log(review.rating + " es " +  typeof parsedRating) */
           return (
             <div key={i} className="review-div">
