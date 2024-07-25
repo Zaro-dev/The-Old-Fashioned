@@ -1,10 +1,10 @@
-import React from 'react'
-import Navbar from 'react-bootstrap/Navbar'
-import imgLogo from '../assets/logo-definitivo.png'
-import Nav from 'react-bootstrap/Nav'
-import { Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import React from "react";
+import Navbar from "react-bootstrap/Navbar";
+import imgLogo from "../assets/logo-definitivo.png";
+import Nav from "react-bootstrap/Nav";
+import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 import { useContext } from "react";
 import { ThemeContext } from "../context/themeContext";
@@ -17,8 +17,13 @@ function MyNavbar() {
       expand="lg"
       className="bg-body-tertiary"
       data-bs-theme={isDarkMode ? "dark" : "light"}
+      //style={{ backgroundColor: "red" }}
     >
-      <Container>
+      <Container
+        className={`navbar-container ${
+          isDarkMode ? "navbar-container-dark" : "navbar-container-light"
+        }`}
+      >
         <Navbar.Brand as={Link} to={"/"}>
           <img src={imgLogo} alt="" width={75} />
           The Old Fashioned

@@ -72,7 +72,11 @@ function FilterDropdown({ allData, onFilter }) {
 
   return (
     <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <Dropdown.Toggle
+        variant="success"
+        id="dropdown-basic"
+        className="btnFilter"
+      >
         Filtrar Botellas
       </Dropdown.Toggle>
 

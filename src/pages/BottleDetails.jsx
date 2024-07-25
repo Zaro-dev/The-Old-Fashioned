@@ -125,7 +125,7 @@ function BottleDetails() {
     <div>
       <div className="bottle-details">
         <div className="imageAndName">
-          <img src={bottle.image} alt="imagen" width={500} />
+          <img src={bottle.image} alt="imagen" width={500} id="detailsImg" />
           <h4 className="bottle-title">{bottle.name}</h4>
           <div className="deleteEdit">
             {/* Botón para eliminar la botella */}

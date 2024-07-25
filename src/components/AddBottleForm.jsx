@@ -90,7 +90,7 @@ function AddBottleForm({ onSubmit, onClose }) {
             required
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className="btnAddBottle">
           Añadir Botella
         </Button>
         <Button variant="secondary" onClick={onClose}>
