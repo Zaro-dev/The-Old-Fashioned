@@ -26,6 +26,7 @@ export default function SearchBar({
         placeholder="Search"
         onChange={handleOnChange}
         value={searchInput}
+        className="searchBar"
       />
     </div>
   );

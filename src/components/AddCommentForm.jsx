@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import { useContext } from "react";
+import { ThemeContext } from "../context/themeContext";
 
 export default function AddCommentForm({ onAddComment, bottleId }) {
+  const { isDarkMode } = useContext(ThemeContext);
   const [newName, setNewName] = useState("");
   const [newReview, setNewReview] = useState("");
   const [newRating, setNewRating] = useState(0);
@@ -11,7 +14,6 @@ export default function AddCommentForm({ onAddComment, bottleId }) {
 
   const handleAddReview = async (e) => {
     e.preventDefault();
-
     try {
       const res = await axios.post(
         `${import.meta.env.VITE_SERVER}/bottles/${bottleId}/reviews`,
@@ -24,7 +26,14 @@ export default function AddCommentForm({ onAddComment, bottleId }) {
       onAddComment(res.data);
       setNewName("");
       setNewReview("");
-      setNewRating(0);
+      setNewRating("0");
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth",
+        });
+      }, 100);
+      setMostrarFormulario(false);
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +45,7 @@ export default function AddCommentForm({ onAddComment, bottleId }) {
     <div className="add-bottle-form">
       <button
         onClick={handleToggleFormulario}
-        className="button-89"
+        className={`button-89 ${isDarkMode ? "darkMode" : "lightMode"}`}
         role="button"
       >
         {mostrarFormulario ? "Ocultar Formulario" : "Mostrar Formulario"}

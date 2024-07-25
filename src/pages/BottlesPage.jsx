@@ -38,7 +38,10 @@ function BottlesPage() {
   // Función para manejar el envío del formulario de nueva botella
   const handleAddBottle = async (newBottle) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_SERVER}/bottles`, newBottle);
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER}/bottles`,
+        newBottle
+      );
       // Actualiza la lista de botellas con la nueva botella
       setAllData((prevData) => [...prevData, response.data]);
       setFilteredData((prevData) => [...prevData, response.data]);
@@ -50,8 +53,8 @@ function BottlesPage() {
 
   // Función para traer más botellas
   const getMoreBottles = () => {
-    setBottleLimitDisplay(bottleLimitDisplay +10)
-  } 
+    setBottleLimitDisplay(bottleLimitDisplay + 10);
+  };
 
   const regretBottles = () => {
     setBottleLimitDisplay(bottleLimitDisplay - bottleLimitDisplay + 10)
@@ -67,7 +70,9 @@ function BottlesPage() {
     }
     if (filters.price) {
       const { min, max } = filters.price;
-      filtered = filtered.filter((bottle) => bottle.price >= min && bottle.price <= max);
+      filtered = filtered.filter(
+        (bottle) => bottle.price >= min && bottle.price <= max
+      );
     }
     setFilteredData(filtered);
   };
@@ -76,9 +81,9 @@ function BottlesPage() {
     return <p>Loading...</p>;
   }
   return (
-    <div>
+    <div className={isDarkMode ? "darkMode" : "lightMode"}>
       {/* Barra de herramientas con filtros y búsqueda */}
-      <div className="barra">
+      <div className={`barra ${isDarkMode ? "darkMode" : "lightMode"}`}>
         <FilterDropdown allData={allData} onFilter={handleFilter} />
         <SearchBar
           allData={allData}
@@ -86,20 +91,28 @@ function BottlesPage() {
           searchInput={searchInput}
           setSearchInput={setSearchInput}
         />
-        <Button onClick={toggleForm}>
+        <Button
+          onClick={toggleForm}
+          className="btnAddBottle"
+          style={{ display: "flex" }}
+        >
           {showForm ? "Cerrar Formulario" : "Añadir Botella"}
         </Button>
       </div>
       {/* Mostrar el formulario para añadir una botella si está visible */}
-      {showForm && <AddBottleForm onSubmit={handleAddBottle} onClose={toggleForm} />}
+      {showForm && (
+        <AddBottleForm onSubmit={handleAddBottle} onClose={toggleForm} />
+      )}
       {/* Mostrar la lista de botellas filtradas */}
-      <div className="bottles-father">
-        {filteredData.slice(0,bottleLimitDisplay).map((bottle) => (
+      <div
+        className={`bottles-father ${isDarkMode ? "darkMode" : "lightMode"}`}
+      >
+        {filteredData.slice(0, bottleLimitDisplay).map((bottle) => (
           <div key={bottle.id} className="bottles-div">
             <Link to={`/bottles/${bottle.id}`}>
               <img src={bottle.image} alt={bottle.name} width={500} />
             </Link>
-            <h3>{bottle.name}</h3>
+            <h3 id="bottleName">{bottle.name}</h3>
           </div>
         ))}
       </div>
