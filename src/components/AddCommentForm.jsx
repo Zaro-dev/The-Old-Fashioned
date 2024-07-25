@@ -14,7 +14,6 @@ export default function AddCommentForm({ onAddComment, bottleId }) {
 
   const handleAddReview = async (e) => {
     e.preventDefault();
-
     try {
       const res = await axios.post(
         `${import.meta.env.VITE_SERVER}/bottles/${bottleId}/reviews`,
@@ -28,6 +27,13 @@ export default function AddCommentForm({ onAddComment, bottleId }) {
       setNewName("");
       setNewReview("");
       setNewRating("0");
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth",
+        });
+      }, 100);
+      setMostrarFormulario(false);
     } catch (error) {
       console.log(error);
     }

@@ -50,6 +50,9 @@ body {
 }
 .bottle-title {
   text-align: center;
+  background-image: linear-gradient(to right, #99780e 45%, #ee4b2b);
+  background-clip: text;
+  color: transparent;
 }
 .bottle-details table tr td {
   padding: 5px;
@@ -316,4 +319,16 @@ footer img {
 .imageAndName img {
   border-radius: 50px;
   border: #743409 solid 10px;
+}
+form {
+  margin-right: 25%;
+  margin-left: 25%;
+}
+@media (max-width: 501px) {
+  #detailsImg {
+    max-width: 100%;
+  }
+}
+.filterDiv {
+  width: 200px;
 }

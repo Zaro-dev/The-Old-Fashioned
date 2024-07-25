@@ -80,7 +80,7 @@ function FilterDropdown({ allData, onFilter }) {
         Filtrar Botellas
       </Dropdown.Toggle>
 
-      <Dropdown.Menu>
+      <Dropdown.Menu className="filterDiv">
         <Form>
           {/* Filtro de origen */}
           <Form.Group>
@@ -102,7 +102,7 @@ function FilterDropdown({ allData, onFilter }) {
 
           {/* Filtro de rango de precio */}
           <Form.Group>
-            <Form.Label>Rango de Precio</Form.Label>
+            <Form.Label>Precio</Form.Label>
             <Row>
               <Col>
                 <Form.Control
@@ -111,6 +111,7 @@ function FilterDropdown({ allData, onFilter }) {
                   value={filters.price.min}
                   onChange={handleFilterChange}
                   placeholder="Min"
+                  style={{ width: 100 }}
                 />
               </Col>
               <Col>
@@ -120,6 +121,7 @@ function FilterDropdown({ allData, onFilter }) {
                   value={filters.price.max}
                   onChange={handleFilterChange}
                   placeholder="Max"
+                  style={{ width: 100 }}
                 />
               </Col>
             </Row>
@@ -127,14 +129,14 @@ function FilterDropdown({ allData, onFilter }) {
 
           {/* Botones de aplicar y limpiar filtros */}
           <Button variant="primary" onClick={applyFilters} className="mt-2">
-            Aplicar Filtros
+            Aplicar
           </Button>
           <Button
             variant="secondary"
             onClick={clearFilters}
             className="mt-2 ml-2"
           >
-            Limpiar Filtros
+            Limpiar
           </Button>
         </Form>
       </Dropdown.Menu>

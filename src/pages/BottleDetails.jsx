@@ -24,8 +24,7 @@ function BottleDetails() {
 
   useEffect(() => {
     getData();
-  }, []);
-
+  });
   // Función para obtener los detalles de la botella y sus reseñas
   const getData = async () => {
     try {
@@ -267,7 +266,6 @@ function BottleDetails() {
               >
                 🗑️
               </button>
-              {console.log(review.id)}
               <br />
             </div>
           );
