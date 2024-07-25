@@ -24,7 +24,7 @@ function BottleDetails() {
 
   useEffect(() => {
     getData();
-  });
+  }, []);
   // Función para obtener los detalles de la botella y sus reseñas
   const getData = async () => {
     try {
@@ -36,7 +36,7 @@ function BottleDetails() {
       setBottle(data);
       setAllReviews(data.reviews);
     } catch (error) {
-      navigate('/error');
+      navigate("/error");
     }
   };
   // Función para añadir un nuevo comentario a las reseñas
@@ -56,7 +56,7 @@ function BottleDetails() {
         navigate("/bottles");
         alert("Botella eliminada de manera muy exitosa!! :D");
       } catch (error) {
-        navigate('/error');
+        navigate("/error");
       }
     } else {
       alert("¿Mejor no la eliminamos?");
@@ -72,7 +72,7 @@ function BottleDetails() {
       setIsEditing(false);
       getData();
     } catch (error) {
-      navigate('/error');
+      navigate("/error");
     }
   };
   const handleInputChange = (e) => {
@@ -94,7 +94,7 @@ function BottleDetails() {
         getData();
         alert("Reseña eliminada de manera muy exitosa!! :D");
       } catch (error) {
-        navigate('/error');
+        navigate("/error");
       }
     } else {
       alert("¿Mejor no la eliminamos?");
@@ -117,7 +117,7 @@ function BottleDetails() {
       return <span>⭐⭐⭐★★</span>;
     } else if (reviewScore === 4) {
       return <span>⭐⭐⭐⭐★</span>;
-    } else if (reviewScore >= 5){
+    } else if (reviewScore >= 5) {
       return <span>⭐⭐⭐⭐⭐</span>;
     }
   };
@@ -202,47 +202,47 @@ function BottleDetails() {
         ) : (
           // Tabla de detalles de la botella (modo visualización)
           <table>
-          <tbody>
-            <tr>
-              <th style={{ textAlign: "center" }}>
-                <h4 className="bottle-title">{bottle.name}</h4>
-              </th>
-            </tr>
-            <tr>
-              <td className="td1">Origin</td>
-              <td>{bottle.origin}</td>
-            </tr>
-            <tr>
-              <td className="td1">Type</td>
-              <td>{bottle.type}</td>
-            </tr>
-            <tr>
-              <td className="td1">Age</td>
-              <td>{bottle.age ? bottle.age : "-"}</td>
-            </tr>
-            <tr>
-              <td className="td1">Flavours</td>
-              <td>{bottle.cata.map((eachFlavour) => {
-                return(`${eachFlavour} `)
-              })}</td>
-            </tr>
-            <tr>
-              <td className="td1">Strength</td>
-              <td>{bottle.alcohol}</td>
-            </tr>
-            <tr>
-              <td className="td1">Price</td>
-              <td style={{ fontWeight: "bold" }}>{bottle.price}€</td>
-            </tr>
-            <tr>
-              <td className="td1">
-                <Stack direction="horizontal" gap={2}>
-                  {bottle.price >= 75 ? <Badge bg="success">Premium</Badge> : null}
-                </Stack>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            <tbody>
+              <tr>
+                <td className="td1">Origin</td>
+                <td>{bottle.origin}</td>
+              </tr>
+              <tr>
+                <td className="td1">Type</td>
+                <td>{bottle.type}</td>
+              </tr>
+              <tr>
+                <td className="td1">Age</td>
+                <td>{bottle.age ? bottle.age : "-"}</td>
+              </tr>
+              <tr>
+                <td className="td1">Flavours</td>
+                <td>
+                  {bottle.cata &&
+                    bottle.cata.map((eachFlavour) => {
+                      return `${eachFlavour} `;
+                    })}
+                </td>
+              </tr>
+              <tr>
+                <td className="td1">Strength</td>
+                <td>{bottle.alcohol}</td>
+              </tr>
+              <tr>
+                <td className="td1">Price</td>
+                <td style={{ fontWeight: "bold" }}>{bottle.price}€</td>
+              </tr>
+              <tr>
+                <td className="td1">
+                  <Stack direction="horizontal" gap={2}>
+                    {bottle.price >= 75 ? (
+                      <Badge bg="success">Premium</Badge>
+                    ) : null}
+                  </Stack>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         )}
       </div>
       <div>
@@ -255,8 +255,8 @@ function BottleDetails() {
         <br />
         {/* Mapeo y renderizado de todas las reseñas */}
         {allReviews.map((review, i) => {
-          console.log(review)
-          const parsedRating = parseInt(review.rating)
+          console.log(review);
+          const parsedRating = parseInt(review.rating);
           /* console.log(review.rating + " es " +  typeof parsedRating) */
           return (
             <div key={i} className="review-div">
