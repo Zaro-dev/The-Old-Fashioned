@@ -382,6 +382,73 @@ form {
   margin-right: 25%;
   margin-left: 25%;
 }
+.about-container{
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+  align-items: start;
+  justify-content: space-around;
+  margin: 20px 200px;
+  flex-wrap: wrap;
+  background-color: lightgreen;
+}
+
+.text-about{
+  
+  width: 30%;
+  border-radius: 10px;
+}
+
+.lists-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ align-items: flex-start;
+ 
+ width: 40%;
+}
+
+.list-container{
+  margin: 0 5px;
+}
+
+#tecnologias {
+ 
+  border-radius: 10px;
+}
+
+#skills {
+  
+  border-radius: 10px;
+}
+
+#devs{
+  margin: 5% 15%;
+  display: flex;
+  width: 70%;
+  justify-content: center;
+}
+
+.dev-container {
+  display: flex;
+  margin: 0 100px;
+  height: 200px;
+  background-color: lightcoral;
+  border-radius: 10px;
+}
+
+.dev-text-container {
+  margin: 10px;
+}
+
+.dev-text-container p{
+  font-weight: bold;
+}
+
+.dev-text-container a{
+  font-weight: bold;
+}
+
 @media (max-width: 501px) {
   #detailsImg {
     max-width: 100%;

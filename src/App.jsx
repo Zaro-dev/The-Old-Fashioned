@@ -9,9 +9,11 @@ import BottleDetails from "./pages/BottleDetails";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ErrorPage from "./pages/ErrorPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 import { useContext } from "react";
 import { ThemeContext } from "./context/themeContext";
+
 
 function App() {
   const { isDarkMode } = useContext(ThemeContext);
@@ -27,6 +29,7 @@ function App() {
         <Route path="/bottles" element={<BottlesPage />} />
         <Route path="/bottles/:bottleId" element={<BottleDetails />} />
         <Route path="/error" element={<ErrorPage />} />
+        <Route path="*" element={<NotFoundPage />}/>
       </Routes>
       <Footer />
     </div>

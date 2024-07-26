@@ -14,7 +14,7 @@ function AddBottleForm({ onSubmit, onClose }) {
   const [waitingForImageUrl, setWaitingForImageUrl] = useState(false);
   const [cata, setCata] = useState([]);
 
-  const flavours = ["vainilla", "chocolate", "limon"];
+  const flavours = ["vainilla", "chocolate", "limon", "turba", "madera", "roble tostado", "café"];
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -59,7 +59,8 @@ function AddBottleForm({ onSubmit, onClose }) {
             required
           />
         </Form.Group>
-
+        <Form.Group>
+        <Form.Label>Notas de cata</Form.Label>
         {flavours.map((flavour, i) => (
           <div key={i}>
             <Form.Check
@@ -78,7 +79,7 @@ function AddBottleForm({ onSubmit, onClose }) {
             />
           </div>
         ))}
-
+        </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Origen</Form.Label>
           <Form.Control
