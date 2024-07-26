@@ -123,7 +123,7 @@ function AddBottleForm({ onSubmit, onClose }) {
           className="btnAddBottle"
           disabled={waitingForImageUrl}
         >
-          Añadir Botella
+          Añadir
         </Button>
         <Button variant="secondary" onClick={onClose}>
           Cancelar

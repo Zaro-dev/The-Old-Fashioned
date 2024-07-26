@@ -15,12 +15,12 @@ function MyNavbar() {
     <Navbar
       collapseOnSelect
       expand="lg"
-      className="bg-body-tertiary"
+      className="bg-body-tertiary navbar-div"
       data-bs-theme={isDarkMode ? "dark" : "light"}
       //style={{ backgroundColor: "red" }}
     >
       <Container
-        className={`navbar-container ${
+        className={`navbar-container important-container ${
           isDarkMode ? "navbar-container-dark" : "navbar-container-light"
         }`}
       >
@@ -46,7 +46,15 @@ function MyNavbar() {
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown.Item>
-              {isDarkMode ? <button onClick={handleToggleTheme}>☀️</button> : <button onClick={handleToggleTheme}>🌑</button>}
+              {isDarkMode ? (
+                <button onClick={handleToggleTheme} className="solSombra">
+                  ☀️
+                </button>
+              ) : (
+                <button onClick={handleToggleTheme} className="solSombra">
+                  🌑
+                </button>
+              )}
             </NavDropdown.Item>
           </Nav>
         </Navbar.Collapse>
