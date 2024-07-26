@@ -77,7 +77,7 @@ function FilterDropdown({ allData, onFilter }) {
         id="dropdown-basic"
         className="btnFilter"
       >
-        Filtrar Botellas
+        Filtrar
       </Dropdown.Toggle>
 
       <Dropdown.Menu className="filterDiv">
