@@ -13,11 +13,11 @@
 
 ## Technologies, Libraries & APIs used
 
-# We have used different Tecnhnologies:
-# -HTML & CSS
-#-JavaScript
-#-React.js with Vite
-#-Boostrap and axios library
+We have used different Tecnhnologies:
+-HTML & CSS
+-JavaScript
+-React.js with Vite
+-Boostrap and axios library
 
 ## Backlog Functionalities
 
