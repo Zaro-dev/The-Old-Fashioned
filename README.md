@@ -7,7 +7,6 @@
 
 ## Description
 
-**NOTE -** Describe your project in one/two lines.
 #### [Client Repo here](https://github.com/Zaro-dev/The-Old-Fashioned)
 #### [Server Repo here](https://github.com/Zaro-dev/The-Old-Fashioned-db)
 
