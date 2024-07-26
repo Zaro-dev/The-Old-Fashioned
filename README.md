@@ -26,9 +26,6 @@
 - **events create** - As a user I want to create an event so that I can invite others to attend
 
 ## Client Routes
-
-**NOTE -** Use below table to list your frontend routes
-
 ## React Router Routes (React App)
 | Path                      | Page              | Components       | Behavior                                                     |
 |---------------------------|-------------------|------------------|--------------------------------------------------------------|
@@ -49,9 +46,9 @@
 
 ### Collaborators
 
-[Developer 1 name](www.github-url.com)
+[Developer 1 name](www.github-url.com/zaro-dev)
 
-[Developer 2 name](www.github-url.com)
+[Developer 2 name](www.github-url.com/ivanballester)
 
 ### Project
 
