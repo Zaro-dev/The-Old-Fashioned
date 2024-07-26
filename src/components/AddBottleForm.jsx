@@ -60,8 +60,6 @@ function AddBottleForm({ onSubmit, onClose }) {
           />
         </Form.Group>
 
-        <Form.Label>Sabores de cata</Form.Label>
-
         {flavours.map((flavour, i) => (
           <div key={i}>
             <Form.Check
