@@ -5,6 +5,7 @@ import FilterDropdown from "../components/FilterDropdown";
 import SearchBar from "../components/SearchBar";
 import AddBottleForm from "../components/AddBottleForm";
 import Button from "react-bootstrap/Button";
+import video from "../assets/pedropedro.gif";
 
 import { useContext } from "react";
 import { ThemeContext } from "../context/themeContext";
@@ -20,7 +21,9 @@ function BottlesPage() {
   const navigate = useNavigate();
   // useEffect para cargar los datos de las botellas al montar el componente
   useEffect(() => {
-    fetchData();
+    setTimeout(() => {
+      fetchData();
+    }, 3000);
   }, []);
 
   // Función para obtener datos de botellas desde el servidor
@@ -96,7 +99,21 @@ function BottlesPage() {
   };
   // Muestra un mensaje de carga mientras se obtienen los datos
   if (!allData.length) {
-    return <p>Loading...</p>;
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <img src={video} width={400} style={{ borderRadius: "100%" }} />
+        <h1>
+          PEDRO CUANDO LE TRAEN EL COPAZO DE <bold>WHISKY</bold>
+        </h1>
+      </div>
+    );
   }
   return (
     <div className={isDarkMode ? "darkMode" : "lightMode"}>
