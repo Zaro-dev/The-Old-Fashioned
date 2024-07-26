@@ -30,15 +30,15 @@
 **NOTE -** Use below table to list your frontend routes
 
 ## React Router Routes (React App)
-| Path                      | Page            | Components        | Behavior                                                      |
-| ------------------------- | ----------------| ----------------  |  ------------------------------------------------------------  |
-| `/`                       | Home            |                   | Home page                                                     |
-| `/signup`                 | Signup          |                   | Signup form, link to login, navigate to homepage after signup |
-| `/login`                  | Login           |                   | Login form, link to signup, navigate to homepage after login  |
-| `/profile`                | Profile         | EditProfile       | Navigate to homepage after logout, expire session             |
-| `/games/list`             | GameList        | AddGame, GameCard | Shows all films on backlog                                    |
-| `/games/edit`             | GamesEdit       |                   | Shows all games on backlog                                    |
-| `/games/favourites`       | FavouriteList   | GameCard          | Shows all games on backlog                                    |
+| Path                      | Page              | Components       | Behavior                                                     |
+|---------------------------|-------------------|------------------|--------------------------------------------------------------|
+| `/`                       | Home              |                  | Home page                                                    |
+| `/bottles`                | BottlesList       | BottleCard       | Shows a list of all bottles                                  |
+| `/bottles/:bottleid`      | BottleDetail      | BottleInfo       | Shows details for a specific bottle                          |
+| `/companies`              | CompaniesList     | CompanyCard      | Shows a list of all companies                                |
+| `/companies/:companyid`   | CompanyDetail     | CompanyInfo      | Shows details for a specific company                         |
+| `/reviews`                | ReviewsList       | ReviewCard       | Shows a list of all reviews                                  |
+| `/reviews/:reviewid`      | ReviewDetail      | ReviewInfo       | Shows details for a specific review                          |
 
 ## Other Components
 
