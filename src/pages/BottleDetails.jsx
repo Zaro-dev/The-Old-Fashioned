@@ -202,47 +202,42 @@ function BottleDetails() {
         ) : (
           // Tabla de detalles de la botella (modo visualización)
           <table>
-            <tbody>
-              <tr>
-                <td className="td1">Origin</td>
-                <td>{bottle.origin}</td>
-              </tr>
-              <tr>
-                <td className="td1">Type</td>
-                <td>{bottle.type}</td>
-              </tr>
-              <tr>
-                <td className="td1">Age</td>
-                <td>{bottle.age ? bottle.age : "-"}</td>
-              </tr>
-              <tr>
-                <td className="td1">Flavours</td>
-                <td>
-                  {bottle.cata &&
-                    bottle.cata.map((eachFlavour) => {
-                      return `${eachFlavour} `;
-                    })}
-                </td>
-              </tr>
-              <tr>
-                <td className="td1">Strength</td>
-                <td>{bottle.alcohol}</td>
-              </tr>
-              <tr>
-                <td className="td1">Price</td>
-                <td style={{ fontWeight: "bold" }}>{bottle.price}€</td>
-              </tr>
-              <tr>
-                <td className="td1">
-                  <Stack direction="horizontal" gap={2}>
-                    {bottle.price >= 75 ? (
-                      <Badge bg="success">Premium</Badge>
-                    ) : null}
-                  </Stack>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <tbody>
+            <tr>
+              <td className="td1">Origin</td>
+              <td>{bottle.origin}</td>
+            </tr>
+            <tr>
+              <td className="td1">Type</td>
+              <td>{bottle.type}</td>
+            </tr>
+            <tr>
+              <td className="td1">Age</td>
+              <td>{bottle.age ? bottle.age : "-"}</td>
+            </tr>
+            <tr>
+              <td className="td1">Flavours</td>
+              <td>{bottle.cata.map((eachFlavour) => {
+                return(`${eachFlavour} `)
+              })}</td>
+            </tr>
+            <tr>
+              <td className="td1">Strength</td>
+              <td>{bottle.alcohol}</td>
+            </tr>
+            <tr>
+              <td className="td1">Price</td>
+              <td style={{ fontWeight: "bold" }}>{bottle.price}€</td>
+            </tr>
+            <tr>
+              <td className="td1">
+                <Stack direction="horizontal" gap={2}>
+                  {bottle.price >= 75 ? <Badge bg="success">Premium</Badge> : null}
+                </Stack>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         )}
       </div>
       <div>
