@@ -46,21 +46,18 @@
 
 ### Collaborators
 
-[Developer 1 name](www.github-url.com/zaro-dev)
+[Mario](https://github.com/Zaro-dev))
 
-[Developer 2 name](www.github-url.com/ivanballester)
+[Ivan](https://github.com/ivanballester)
 
 ### Project
 
-[Repository Link Client](www.your-github-url-here.com)
+[The Old Fashioned](https://github.com/Zaro-dev/The-Old-Fashioned)
 
-[Repository Link Server](www.your-github-url-here.com)
+[Server](https://github.com/Zaro-dev/The-Old-Fashioned-db)
 
-[Deploy Link](www.your-deploy-url-here.com)
+[Deploy](https://the-old-fashioned.netlify.app/)
 
-### Trello
-
-[Link to your trello board](www.your-trello-url-here.com)
 
 ### Slides
 
