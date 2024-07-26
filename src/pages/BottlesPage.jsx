@@ -21,9 +21,7 @@ function BottlesPage() {
   const navigate = useNavigate();
   // useEffect para cargar los datos de las botellas al montar el componente
   useEffect(() => {
-    setTimeout(() => {
-      fetchData();
-    }, 3000);
+    fetchData();
   }, []);
 
   // Función para obtener datos de botellas desde el servidor

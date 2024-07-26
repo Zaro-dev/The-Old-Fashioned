@@ -10,9 +10,7 @@ function CompaniesPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTimeout(() => {
-      getData();
-    }, 3000);
+    getData();
   }, []);
 
   const getData = async () => {
