@@ -114,7 +114,7 @@ function BottlesPage() {
           className="btnAddBottle"
           style={{ display: "flex" }}
         >
-          {showForm ? "Cerrar Formulario" : "Añadir Botella"}
+          {showForm ? "Cerrar" : "Añadir"}
         </Button>
       </div>
       {/* Mostrar el formulario para añadir una botella si está visible */}
@@ -133,18 +133,19 @@ function BottlesPage() {
             <h3 id="bottleName">{bottle.name}</h3>
           </div>
         ))}
+        {bottleLimitDisplay >= filteredData.length ? (
+          <Button className="button-list-bottles" onClick={regretBottles}>
+            Ver menos
+          </Button>
+        ) : (
+          <Button
+            className="button-list-bottles force-middle"
+            onClick={getMoreBottles}
+          >
+            Ver más
+          </Button>
+        )}
       </div>
-      {console.log("filteredData length = " + filteredData.length)}
-      {console.log("bottleLimit = " + bottleLimitDisplay)}
-      {bottleLimitDisplay >= filteredData.length ? (
-        <Button className="button-list-bottles" onClick={regretBottles}>
-          Ver menos
-        </Button>
-      ) : (
-        <Button className="button-list-bottles" onClick={getMoreBottles}>
-          Ver más
-        </Button>
-      )}
     </div>
   );
 }
