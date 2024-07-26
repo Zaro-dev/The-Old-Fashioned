@@ -8,8 +8,8 @@
 ## Description
 
 **NOTE -** Describe your project in one/two lines.
-#### [Client Repo here](www.your-github-url-here.com)
-#### [Server Repo here](www.your-github-url-here.com)
+#### [Client Repo here](https://github.com/Zaro-dev/The-Old-Fashioned)
+#### [Server Repo here]
 
 ## Technologies, Libraries & APIs used
 
