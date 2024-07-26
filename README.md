@@ -9,11 +9,15 @@
 
 **NOTE -** Describe your project in one/two lines.
 #### [Client Repo here](https://github.com/Zaro-dev/The-Old-Fashioned)
-#### [Server Repo here]
+#### [Server Repo here](https://github.com/Zaro-dev/The-Old-Fashioned-db)
 
 ## Technologies, Libraries & APIs used
 
-**NOTE -** List here all technologies used in the project like HTML, CSS, Javascript, React, axios, Bootstrap, etc.
+We have used different Tecnhnologies:
+-HTML & CSS
+-JavaScript
+-React.js with Vite
+-Boostrap and axios library
 
 ## Backlog Functionalities
 
