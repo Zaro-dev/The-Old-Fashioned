@@ -19,11 +19,15 @@
 
 
 ## User Stories
-
 - **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault 
 - **homepage** - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
-- **events list** - As a user I want to see all the events available so that I can choose which ones I want to attend
-- **events create** - As a user I want to create an event so that I can invite others to attend
+- **CompaniesInfo** - As a user I want to see more details about company
+- **Bottles** - As a user I want to see all products
+- **events add** - As a user I want to see add more bottles to the list
+- **events search** - As a user I want to filter in the whole bottle pages to find the bottle i do want
+- **events filter** - As a user I want to see products in a price range
+- **events edit/remove** - As a user I want to edit/remove any bottle
+- **events add/remove review** - As a user I want to add/removes reviews, to bring my experience to other users
 
 ## Client Routes
 ## React Router Routes (React App)
@@ -46,7 +50,7 @@
 
 ### Collaborators
 
-[Mario](https://github.com/Zaro-dev))
+[Mario](https://github.com/Zaro-dev)
 
 [Ivan](https://github.com/ivanballester)
 
